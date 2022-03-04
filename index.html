@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Digital Clock</title>
+</head>
+
+<body>
+    <div id="container">
+        <div class="clock-area">
+            <h1 id="time"></h1>
+            <h6 id='timeFormet'></h6>
+        </div>
+    </div>
+
+    <script>
+        function digitalClock() {
+            let hours = new Date().getHours();
+            let min = new Date().getMinutes();
+            let sec = new Date().getSeconds();
+
+            let timeFormet = 'AM'
+
+            // Condition for 12 hour time formet
+
+            if (hours === 0) {
+                hours = 12;
+            }
+            if (hours > 12) {
+                hours = hours - 12;
+                timeFormet = 'PM'
+            }
+
+
+
+            // End 12 hour time formet.
+
+            // Condition for add 0, when the time was avobe 10
+
+            // if (hours < 10) {
+            //     hours = "0" + hours;
+            // }
+
+            hours = hours < 10 ? '0' + hours : hours; // Use turnery oparator instance if else statement
+
+            min = min < 10 ? '0' + min : min; // Use turnery oparator
+            sec = sec < 10 ? '0' + sec : sec; // Use turnery oparator
+
+
+
+
+
+
+
+            finalTime = `${hours} : ${min}: ${sec}  `
+
+            document.getElementById('time').innerText = finalTime;
+            document.getElementById('timeFormet').innerText = timeFormet;
+
+            setInterval(digitalClock, 1000)
+
+        }
+        digitalClock()
+    </script>
+
+</body>
+
+</html>
